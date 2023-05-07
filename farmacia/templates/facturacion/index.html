@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block titulo %} Facturacion {% endblock %}
+    
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href="#" role="button">Agregar una factura</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Facturas</h4>
+
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">N° de factura</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Sucursal</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center">
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>EDITAR | ELIMINAR | IMPRIMIR</td>
+    
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+        
+
+
+    </div>
+    <div class="card-footer text-muted">
+
+    </div>
+</div>
+
+
+{% endblock %}
