@@ -1,10 +1,54 @@
 {% extends "base.html" %}
 
-{% block titulo %} Productos{% endblock %}
+{% block titulo %} Productos {% endblock %}
     
 {% block contenido %}
 
-Lista de productos
+<div class="card">
+    <div class="card-header">
+        <a class="btn btn-success" href="{% url 'crear-producto' %}" role="button">Agregar productos</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Productos</h4>
+
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in productos %}
+                    <tr class="text-center ">
+                        <td>{{producto.nombre}}</td>
+                        <td>{{producto.descripcion}}</td>
+                        <td>{{producto.stock}}</td>
+                        <td>{{producto.precio_venta}}</td>
+                        <td> <a  class="btn btn-info" 
+                            href="{% url 'editar-producto' producto.id_producto %}" role="button">Editar</a> 
+                            |<a  class="btn btn-danger" 
+                            href="{% url 'eliminar-producto' producto.id_producto %}" 
+                            role="button">
+                            Borrar
+                        </a>
+                    </tr>
+                    {% endfor %}  
+                </tbody>
+            </table>
+        </div>
+        
+
+
+    </div>
+    <div class="card-footer text-muted">
+
+    </div>
+</div>
 
 
 {% endblock %}

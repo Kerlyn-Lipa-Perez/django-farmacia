@@ -6,7 +6,7 @@
 
 <div class="card">
     <div class="card-header">
-        <a name="" id="" class="btn btn-success" href="#" role="button">Agregar una factura</a>
+        <a class="btn btn-success" href="{% url 'crear-facturas' %}" role="button">Agregar una factura</a>
     </div>
     <div class="card-body">
         <h4 class="card-title">Facturas</h4>
@@ -18,26 +18,29 @@
                         <th scope="col">N° de factura</th>
                         <th scope="col">Fecha</th>
                         <th scope="col">Cliente</th>
-                        <th scope="col">Sucursal</th>
                         <th scope="col">Total</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {% for factura in facturas %}
                     <tr class="text-center">
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>EDITAR | ELIMINAR | IMPRIMIR</td>
+                        <td>{{factura.id_factura}}</td>
+                        <td>{{factura.fecha_emision}}</td>
+                        <td>{{factura.cliente}}</td>
+                        <td>{{factura.total}}</td>
+                        <td>
+                            <a class="btn btn-success" href="{% url 'editar-facturas' factura.id_factura %}" role="button">Editar</a> |
+                             <a class="btn btn-danger" href="{% url 'eliminar-facturas' factura.id_factura %}" role="button">Eliminar</a>
+                            
     
                     </tr>
-                   
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
         
-
+   
 
     </div>
     <div class="card-footer text-muted">

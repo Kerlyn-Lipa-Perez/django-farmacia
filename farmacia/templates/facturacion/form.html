@@ -1,0 +1,62 @@
+<form enctype="multipart/form-data" method="post">
+    {% csrf_token %} 
+    {% for campo in formulario %}
+        <div class="mb-3">
+            <label for="{{ campo.name }}" class="form-label">{{ campo.label }}</label>
+            {% if campo.field.widget.input_type != 'file' %}
+                {% if campo.name == 'cliente' %}
+                    <select class="form-control" id="{{ campo.name }}" name="{{ campo.name }}">
+                        {% for cliente in clientes %}
+                            <option value="{{ cliente.id_cliente }}">{{ cliente.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                {% else %}
+                    <input
+                        type="{{ campo.field.widget.input_type }}"
+                        class="form-control"
+                        name="{{ campo.name }}"
+                        id="{{ campo.name }}"
+                        aria-describedby="helpId"
+                        placeholder="{{ campo.label }}"
+                        value="{{ campo.value | default:'' }}"
+                    />
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="col-12 help-text">
+            {{ campo.errors }}
+        </div>
+    {% endfor %}
+    {% csrf_token %} 
+    {% for campo2 in formularioooo %}
+        <div class="mb-3">
+            <label for="{{ campo2.name }}" class="form-label">{{ campo2.label }}</label>
+            {% if campo2.field.widget.input_type != 'file' %}
+                {% if campo2.name == 'producto' %}
+                    <select class="form-control" id="{{ campo2.name }}" name="{{ campo2.name }}">
+                        {% for producto in productos %}
+                            <option value="{{ producto.id_producto }}">{{ producto.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                {% else %}
+                    <input
+                        type="{{ campo2.field.widget.input_type }}"
+                        class="form-control"
+                        name="{{ campo2.name }}"
+                        id="{{ campo2.name }}"
+                        aria-describedby="helpId"
+                        placeholder="{{ campo2.label }}"
+                        value="{{ campo2.value | default:'' }}"
+                    />
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="col-12 help-text">
+        {{ campo2.errors }}
+    </div>
+    {% endfor %}
+    
+    <br/>
+    <input name="" id="" class="btn btn-success" type="submit" value="Enviar información">
+    <a class="btn btn-danger" href="{% url 'facturacion' %}" role="button">Cancelar</a>
+</form>

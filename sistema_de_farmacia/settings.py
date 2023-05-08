@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'sistema_de_farmacia.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'farmacia',
+        'NAME': 'test_farmacia3',
         'USER' : 'root',
         'PASSWORD' :'clavenueva',
         'HOST' : 'localhost',
