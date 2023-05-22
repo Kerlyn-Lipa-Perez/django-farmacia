@@ -55,7 +55,7 @@ def signin(request):
         })
     else:
         user = authenticate(request,username = request.POST['username'], password = request.POST['password'])
-        print(request.POST)
+        #print(request.POST)
         if user  is None:
             return render(request,'signin.html',{
                 'form':AuthenticationForm,
@@ -172,6 +172,9 @@ def crear_facturas(request):
         'detalle_facturas':detalle_facturas,
         'productos':productos
     })
+    #Cambiar para que se selecionen los productos en vez de listarlos y luego 
+    #validar para que sean esos datos los que se guarden en la factura
+    
 
 @login_required
 def eliminar_facturas(request,id):
@@ -182,8 +185,7 @@ def eliminar_facturas(request,id):
 @login_required
 def editar_facturas(request,id):
     factura=Factura.objects.get(id_factura= id)
-    cliente = factura.cliente #
-    print(cliente)
+    cliente = factura.cliente #cliente
     formulario = CrearFacturasForm(request.POST or None, request.FILES or None, instance=factura)
     formulario.fields['cliente'].initial = cliente
     if formulario.is_valid() and request.POST:
