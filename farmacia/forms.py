@@ -4,7 +4,6 @@ from django.core.validators import RegexValidator
 from django.core.validators import MinLengthValidator,validate_email,EmailValidator
 from django.core.exceptions import ValidationError
 import re
-#Añadir Widgets a todos para que validen los datos de entrada 
 
 class CreateClienteForm(forms.ModelForm):
    
@@ -71,7 +70,6 @@ class CrearProductosForm(forms.ModelForm):
 class CrearFacturasForm(forms.ModelForm):
     cliente = forms.ModelChoiceField(queryset=Cliente.objects.all())
 
-    
     class Meta:
         model = Factura  
         fields = ['cliente','total','descuento']
