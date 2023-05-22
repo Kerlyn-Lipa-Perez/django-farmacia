@@ -1,4 +1,3 @@
-
 # Create your models here.
 from django.db import models
 from django.core.validators import MinLengthValidator,validate_email,EmailValidator
@@ -11,8 +10,6 @@ class Cliente(models.Model):
     email = models.EmailField(max_length=254, validators=[EmailValidator( message='Ingresa un correo valido')])
     def __str__(self):
         return self.nombre
-
-
 
 
 
@@ -47,3 +44,4 @@ class DetalleFactura(models.Model):
     subtotal = models.DecimalField(max_digits=8, decimal_places=2)
     def __Producto__(self):
         return self.producto
+
