@@ -36,7 +36,6 @@ class CreateClienteForm(forms.ModelForm):
 
 class CrearProductosForm(forms.ModelForm):
 
-    
     class Meta:
         model = Producto
         fields = ['nombre','descripcion','stock','precio_venta', 'precio_compra']
